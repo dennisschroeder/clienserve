@@ -13,7 +13,7 @@ void start_chat(int sockfd)
 	char buff[MAX]; 
 	int n; 
 	// infinite loop for chat 
-	for (;;) { 
+	while(1) { 
 		bzero(buff, MAX); 
 
 		// read the message from client and copy it in buffer 
@@ -37,15 +37,12 @@ void start_chat(int sockfd)
 	} 
 } 
 
-// Driver function 
 int main() 
 { 
 	int sockfd; 
 	int connfd;
 	int len; 
-	struct sockaddr_in;
-	struct servaddr;
-	struct cli;
+	struct sockaddr_in servaddr, cli;
 
 	// socket create and verification 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
@@ -55,11 +52,12 @@ int main()
 	} 
 	else
 		printf("Socket successfully created..\n"); 
+	
 	bzero(&servaddr, sizeof(servaddr)); 
 
 	// assign IP, PORT 
 	servaddr.sin_family = AF_INET; 
-	servaddr.sin_addr.s_addr = htonl(INADDR_ANY); 
+	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	servaddr.sin_port = htons(PORT); 
 
 	// Binding newly created socket to given IP and verification 
