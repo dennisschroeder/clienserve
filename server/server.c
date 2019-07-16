@@ -42,7 +42,7 @@ int main()
 	int sockfd; 
 	int connfd;
 	int len; 
-	struct sockaddr_in servaddr, cli;
+	struct sockaddr_in servaddr, client;
 
 	// socket create and verification 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
@@ -75,10 +75,9 @@ int main()
 	} 
 	else
 		printf("Server listening..\n"); 
-	len = sizeof(cli); 
+	len = sizeof(client); 
 
-	// Accept the data packet from client and verification 
-	connfd = accept(sockfd, (SA*)&cli, &len); 
+	connfd = accept(sockfd, (SA*)&client, &len); 
 	if (connfd < 0) { 
 		printf("server acccept failed...\n"); 
 		exit(0); 
